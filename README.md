@@ -12,7 +12,7 @@
     
     
 </p>
-Convert image to base64, and vise versa
+Convert image/audio to base64, and vise versa
 
 ## Code Example
 

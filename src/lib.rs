@@ -10,12 +10,14 @@ use std::string::String;
 
 pub fn get_file_type(hex: &str) -> &str {
     if Regex::new(r"^ffd8ffe0").unwrap().is_match(hex) { 
-        return "jpeg" 
+        return "image/jpeg" 
     } else if Regex::new(r"^89504e47").unwrap().is_match(hex) {  
-        return "png" 
+        return "image/png" 
     } else if Regex::new(r"^47494638").unwrap().is_match(hex) { 
-        return "gif"
-    } 
+        return "image/gif"
+    } else if Regex::new(r"^fffb9064").unwrap().is_match(hex) { 
+        return "audio/mp3"
+    }
     panic!("invalid file type")
 }
 
@@ -25,7 +27,7 @@ pub fn to_base64(path: &str) -> String {
     let _ = file.read_to_end(&mut vec);
     let base64 = vec.to_base64(MIME);
     let hex = vec.to_hex();
-    return format!("data:image/{};base64,{}", get_file_type(&hex), base64.replace("\r\n", ""));
+    return format!("data:{};base64,{}", get_file_type(&hex), base64.replace("\r\n", ""));
 }
 
 pub fn from_base64(base64: String) -> Vec<u8> {

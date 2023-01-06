@@ -37,6 +37,9 @@ Add the dependency to your `Cargo.toml`:
 image-base64 = "0.1"
 ```
 
+## Tool
+https://en.wikipedia.org/wiki/List_of_file_signatures
+
 ## License
 
 MIT
